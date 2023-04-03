@@ -1,13 +1,19 @@
-specVersion: 0.2.0
-name: astarStatsAggregateBlockData
+specVersion: 1.0.0
+name: astar-starter
 version: 0.0.1
-description: >-
-  A astar network blockchain aggregation data.
-repository: 'https://github.com/AstarStats/astarsts-aggregate-block-data'
+runner:
+  node:
+    name: '@subql/node'
+    version: '*'
+  query:
+    name: '@subql/query'
+    version: '*'
+description: This SubQuery project can be use as a starting point for Astar network
+repository: 'https://github.com/subquery/astar-subql-starters'
 schema:
   file: ./schema.graphql
 network:
-  genesisHash: '0x9eb76c5184c4ab8679d2d5d819fdf90b9c001403e9e17da2e14b6d8aec4029c6'
+  chainId: '0x9eb76c5184c4ab8679d2d5d819fdf90b9c001403e9e17da2e14b6d8aec4029c6'
   endpoint: 'wss://rpc.astar.network'
   dictionary: 'https://api.subquery.network/sq/subquery/astar-dictionary'
   chaintypes:

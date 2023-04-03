@@ -3,7 +3,7 @@ import {MonthlyCount} from "../types/models/MonthlyCount";
 import {AggregateData} from "../types/models/AggregateData";
 import {isHexString} from '@ethersproject/bytes';
 
-import {SubstrateBlock} from "@subql/types";
+import {SubstrateBlock } from "@subql/types";
 import FrontierEvmDatasourcePlugin, { FrontierEvmCall } from "@subql/contract-processors/dist/frontierEvm";
 import { isInputCreateContract, isContractFunction, wrapExtrinsics, getExtrinsicsGas } from "../utils";
 
@@ -45,7 +45,7 @@ export async function handleBlock(thisBlock: SubstrateBlock): Promise<void> {
   const _evmTransaction = _wrapedExtinsics.filter((ext) => ext.extrinsic.method.section === 'ethereum' && ext.extrinsic.method.method === 'transact');
 
   const _evmCalls: FrontierEvmCall[] = await Promise.all(
-    _evmTransaction.map( (ext) => FrontierEvmDatasourcePlugin.handlerProcessors['substrate/FrontierEvmCall'].transformer(ext, {} as any, undefined, undefined))
+    _evmTransaction.map( (ext) => FrontierEvmDatasourcePlugin.handlerProcessors['substrate/FrontierEvmCall'].transformer(ext as any, {} as any, undefined, undefined))
   ) as any;
 
   // #####################################################################
